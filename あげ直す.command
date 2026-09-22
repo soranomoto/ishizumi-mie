@@ -2,7 +2,8 @@
 # デスクトップの index.html を、公開ページに上げ直す。
 # アドレスは変わらない → https://soranomoto.github.io/ishizumi-mie/
 cd "$(dirname "$0")" || exit 1
-cp ~/Desktop/index.html ./index.html || { echo "デスクトップに index.html が無い"; exit 1; }
+# 原本は 石済み情報 フォルダ（2026-09-22 いちろうさんが移した）
+cp ~/Desktop/石済み情報/index.html ./index.html || { echo "石済み情報 に index.html が無い"; exit 1; }
 git add -A
 git -c user.name="飯島一郎" -c user.email="senteiyasora@gmail.com" \
     commit -q -m "本文を直した $(date '+%Y-%m-%d %H:%M')" || { echo "直したところがない"; exit 0; }
