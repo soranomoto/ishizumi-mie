@@ -5,7 +5,7 @@
 <title>三重の石積み 22か所</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
  --paper:#FFFFFF; --panel:#F4F2EC; --line:#D8D2C4; --ink:#1B1712;
@@ -28,8 +28,10 @@
 html{-webkit-text-size-adjust:100%}
 body{
  margin:0; background:var(--paper); color:var(--soft);
- font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
- font-weight:500; line-height:1.95; font-size:16px;
+ /* 2026-09-22 noteと同じ指定にした。webフォントを読まず、端末が持っている明朝を使う。
+    iPhone=ヒラギノ明朝／Windows=游明朝。表示が速く、字面が読み慣れた形になる */
+ font-family:"Hiragino Mincho ProN","Hiragino Mincho Pro",HGSMinchoE,"Yu Mincho",YuMincho,"MS PMincho",serif;
+ font-weight:400; line-height:1.95; font-size:16px;
 }
 body[data-size="m"]{font-size:17.5px}
 body[data-size="l"]{font-size:19.5px}
@@ -74,7 +76,7 @@ nav .sub button:hover{color:var(--ink)}
 nav .sub button.on{color:var(--goldtx)}
 
 main{padding:20px 0 84px; max-width:44rem}
-h1{font-size:1.5rem; color:var(--ink); font-weight:700; letter-spacing:.04em; margin:0 0 20px; line-height:1.6}
+h1{font-size:1.5rem; color:var(--ink); font-weight:700; letter-spacing:.04em; font-feature-settings:"palt" 1; margin:0 0 20px; line-height:1.6}
 h2{font-size:1.14rem; color:var(--ink); font-weight:700; margin:52px 0 12px; padding-bottom:8px; border-bottom:1px solid var(--line)}
 h3{font-size:1rem; color:var(--ink); font-weight:700; margin:32px 0 8px}
 /* もくじから飛んだとき、見出しが上の帯に隠れないようにする。
@@ -96,7 +98,7 @@ blockquote p:last-child{margin:0}
 table{border-collapse:collapse; width:100%; font-size:.88rem}
 th,td{border:1px solid var(--line); padding:4px 8px; text-align:left; vertical-align:top}
 th{background:var(--panel); color:var(--ink); font-weight:700; white-space:nowrap}
-td b{font-family:"Shippori Mincho",serif}
+td b{font-family:inherit}
 
 /* 用語 */
 i.t{font-style:normal; border-bottom:1px dotted var(--gold); cursor:help}
