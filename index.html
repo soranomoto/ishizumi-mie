@@ -80,6 +80,9 @@ main{padding:20px 0 84px; max-width:44rem}
 h1{font-size:1.5rem; color:var(--ink); font-weight:700; letter-spacing:.04em; margin:0 0 20px; line-height:1.6}
 h2{font-size:1.14rem; color:var(--ink); font-weight:700; margin:52px 0 12px; padding-bottom:8px; border-bottom:1px solid var(--line)}
 h3{font-size:1rem; color:var(--ink); font-weight:700; margin:32px 0 8px}
+/* もくじから飛んだとき、見出しが上の帯に隠れないようにする。
+   --hh は帯の実寸をJSが入れる（スマホでは帯が2段になり高さが変わるため） */
+.pg section, .pg h1, .pg h2{scroll-margin-top:calc(var(--hh, 56px) + 14px)}
 h4{font-size:.94rem; color:var(--goldtx); font-weight:700; margin:20px 0 4px}
 p{margin:0 0 12px}
 p.note{border-left:2px solid var(--gold); padding-left:12px; margin-left:0}
@@ -256,8 +259,15 @@ nav.innerHTML = DATA.nav.map(c=>{
   return `<button class="ch" data-i="${c.i}">${c.t}</button><div class="sub" data-for="${c.i}">${sub}</div>`;
 }).join('');
 
+// 上の帯の実寸を測って --hh に入れる。飛び先のずれはここで決まる
+function headH(){
+  const h=document.querySelector('header');
+  if(h) document.documentElement.style.setProperty('--hh', h.offsetHeight+'px');
+}
+addEventListener('resize', headH); addEventListener('orientationchange', headH); headH();
+
 function show(i,anchor){
-  cur=i;
+  cur=i; headH();
   pgs.forEach(p=>p.hidden = p.id !== 'p'+i);
   $$('.ch',nav).forEach(b=>b.classList.toggle('on', +b.dataset.i===i));
   $$('.sub',nav).forEach(d=>d.classList.toggle('open', +d.dataset.for===i));
